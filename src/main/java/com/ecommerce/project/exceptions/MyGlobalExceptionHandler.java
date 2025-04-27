@@ -13,6 +13,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class MyGlobalExceptionHandler {
 
+    // 유효성 검사 예외
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> myMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         Map<String, String> response = new HashMap<>();
@@ -22,5 +23,19 @@ public class MyGlobalExceptionHandler {
             response.put(fieldName, message);
         });
         return new ResponseEntity<Map<String, String>>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    // 리소스 NotFound 예외
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> myResourceNotFoundException(ResourceNotFoundException e) {
+        String message = e.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    // API 예외
+    @ExceptionHandler(APIException.class)
+    public ResponseEntity<String> myAPIException(APIException e) {
+        String message = e.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 }
