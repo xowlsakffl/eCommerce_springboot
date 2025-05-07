@@ -21,7 +21,7 @@
 
 
 ## Erd
-![Uploading Erd.png…]()
+![Erd](https://github.com/user-attachments/assets/8f952ce6-4261-45ee-8a5c-d8c069b263d8)
 
 
 ## Result   
