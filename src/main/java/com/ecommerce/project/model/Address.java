@@ -23,6 +23,10 @@ public class Address {
     private Long addressId;
 
     @NotBlank
+    @Size(min = 1, message = "주소 이름은 최소 1자 이상이여야합니다.")
+    private String title; // 전체 주소
+
+    @NotBlank
     @Size(min = 5, message = "전체 주소는 최소 5자 이상이여야합니다.")
     private String addressName; // 전체 주소
 
@@ -62,9 +66,9 @@ public class Address {
     @Size(min = 2, message = "읍/면/동은 최소 2자 이상이여야합니다.")
     private String region3DepthName; // 읍/면/동
 
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "addresses")
-    private List<User> users = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Address(String addressName, String roadNameAddress, String jibunAddress, String postalCode, String latitude, String longitude, String buildingName, String region1DepthName, String region2DepthName, String region3DepthName) {
         this.addressName = addressName;
