@@ -17,7 +17,7 @@
 - Github
 - AWS EC2
 - Redis
-- MariaDB
+- MySQL
 
 
 ## Erd
