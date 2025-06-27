@@ -20,7 +20,7 @@ public class Category {
     private Long categoryId;
 
     @NotBlank
-    @Size(min = 5, message = "카테고리명은 최소 5자 이상 이여야합니다.")
+    @Size(min = 2, message = "카테고리명은 최소 2자 이상 이여야합니다.")
     private String categoryName;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
