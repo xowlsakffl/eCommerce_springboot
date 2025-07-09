@@ -27,6 +27,14 @@ public class Address {
     private String title; // 전체 주소
 
     @NotBlank
+    @Size(min = 2, message = "받는 사람은 2자 이상이여야합니다.")
+    private String recipient; // 전체 주소
+
+    @NotBlank
+    @Size(min = 8, message = "전화번호는 최소 8자 이상이여야합니다.")
+    private String recipientNumber; // 전체 주소
+
+    @NotBlank
     @Size(min = 5, message = "전체 주소는 최소 5자 이상이여야합니다.")
     private String addressName; // 전체 주소
 
@@ -41,14 +49,6 @@ public class Address {
     @NotBlank
     @Size(min = 4, message = "우편번호는 최소 4자 이상이여야합니다.")
     private String postalCode; // 우편번호
-
-    @NotBlank
-    @Size(min = 2, message = "위도는 최소 2자 이상이여야합니다.")
-    private String latitude; // 위도
-
-    @NotBlank
-    @Size(min = 2, message = "경도는 최소 2자 이상이여야합니다.")
-    private String longitude; // 경도
 
     @NotBlank
     @Size(min = 2, message = "건물명은 최소 2자 이상이여야합니다.")
@@ -70,13 +70,14 @@ public class Address {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Address(String addressName, String roadNameAddress, String jibunAddress, String postalCode, String latitude, String longitude, String buildingName, String region1DepthName, String region2DepthName, String region3DepthName) {
+    public Address(String title, String addressName, String recipient, String recipientNumber, String roadNameAddress, String jibunAddress, String postalCode, String latitude, String longitude, String buildingName, String region1DepthName, String region2DepthName, String region3DepthName) {
+        this.title = title;
         this.addressName = addressName;
+        this.recipient = recipient;
+        this.recipientNumber = recipientNumber;
         this.roadNameAddress = roadNameAddress;
         this.jibunAddress = jibunAddress;
         this.postalCode = postalCode;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.buildingName = buildingName;
         this.region1DepthName = region1DepthName;
         this.region2DepthName = region2DepthName;

@@ -67,12 +67,12 @@ public class AddressServiceImpl implements AddressService {
         Address addressFromDatabase = addressRepository.findById(addressId)
                 .orElseThrow(() -> new ResourceNotFoundException("Address", "addressId", addressId));
         addressFromDatabase.setTitle(addressDTO.getTitle());
+        addressFromDatabase.setRecipient(addressDTO.getRecipient());
+        addressFromDatabase.setRecipientNumber(addressDTO.getRecipientNumber());
         addressFromDatabase.setAddressName(addressDTO.getAddressName());
         addressFromDatabase.setRoadNameAddress(addressDTO.getRoadNameAddress());
         addressFromDatabase.setJibunAddress(addressDTO.getJibunAddress());
         addressFromDatabase.setPostalCode(addressDTO.getPostalCode());
-        addressFromDatabase.setLatitude(addressDTO.getLatitude());
-        addressFromDatabase.setLongitude(addressDTO.getLongitude());
         addressFromDatabase.setBuildingName(addressDTO.getBuildingName());
         addressFromDatabase.setRegion1DepthName(addressDTO.getRegion1DepthName());
         addressFromDatabase.setRegion2DepthName(addressDTO.getRegion2DepthName());
